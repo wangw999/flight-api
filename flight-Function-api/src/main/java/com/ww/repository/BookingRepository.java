@@ -1,0 +1,13 @@
+package com.ww.repository;
+
+import com.ww.entity.Booking;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+import java.util.Optional;
+
+public interface BookingRepository extends JpaRepository<Booking, Long> {
+    // 根据用户ID查找其所有预订记录
+    List<Booking> findByUserId(Long userId);
+    // 根据预订ID查找预订记录
+    Optional<Booking> findByBookingId(Long bookingId);
+}
