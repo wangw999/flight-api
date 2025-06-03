@@ -22,8 +22,9 @@ spring:
         - classpath:scripts/schema.sql
       data-locations:
         - classpath:scripts/data.sql
-secret:
-  key: ww's secret key---123456789012345678901234567890---
+jwt:
+  secret: s a secret keyThis ietThis is a secret keyThis ietThis is a secret keyThis is a secThis is a secret keyThis is a secret keyThis is a secret keyThis is a secret keyThis is a secret keyret keyThis is a secret keyThis is a secretis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyT keyThis is a secret key key
 server:
   port: 8081
+
 

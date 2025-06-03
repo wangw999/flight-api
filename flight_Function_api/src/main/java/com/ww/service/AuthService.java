@@ -7,6 +7,7 @@ import com.ww.dto.RegisterRequestDto;
 import com.ww.exception.ResourceNotFoundException;
 import com.ww.config.jwt.JwtUtil;
 import com.ww.repository.UserRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -25,25 +26,20 @@ public class AuthService {
     }
 
     public LoginResponseDto login(LoginRequestDto loginRequestDto) {
-        UserEntity user = userRepository.findByEmail(loginRequestDto.getEmail()).orElseThrow(()->new ResourceNotFoundException("User Not Found"));
+        UserEntity user = userRepository.findByEmail(loginRequestDto.getEmail()).orElseThrow(() -> new ResourceNotFoundException("User Not Found"));
         if (!passwordEncoder.matches(loginRequestDto.getPassword(), user.getPassword())) {
-            throw new RuntimeException("Invalid Credentials");
+            throw new RuntimeException("Password is Wrong！");
         }
-
         String token = jwtUtil.generateToken(user.getEmail());
-
         return new LoginResponseDto(token);
     }
 
     public boolean register(RegisterRequestDto registerRequestDto) {
-        UserEntity user = new UserEntity();
-        user.setEmail(registerRequestDto.getEmail());
-        user.setPassword(passwordEncoder.encode(registerRequestDto.getPassword()));
-//        user.setUserName(registerRequestDto.getEmail());
-//        user.setFullName(registerRequestDto.getFullName());
-//        user.setRole(User.Role.CUSTOMER);
+        UserEntity userEntity = new UserEntity();
+        BeanUtils.copyProperties(registerRequestDto, userEntity);
+        userEntity.setPassword(passwordEncoder.encode(registerRequestDto.getPassword()));
 
-        userRepository.save(user);
+        userRepository.save(userEntity);
         return true;
     }
 }

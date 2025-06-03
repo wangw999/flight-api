@@ -16,9 +16,7 @@ import java.util.Map;
 
 @Component
 public class JwtUtil {
-
-    // private final String SECRET = "s a secret keyThis ietThis is a secret keyThis ietThis is a secret keyThis is a secThis is a secret keyThis is a secret keyThis is a secret keyThis is a secret keyThis is a secret keyret keyThis is a secret keyThis is a secretis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyTis is a secret keyT keyThis is a secret key key";
-    @Value("${secret.key}")
+    @Value("${jwt.secret}")
     private String SECRET;
 
     public String generateToken(String email) {
@@ -27,11 +25,13 @@ public class JwtUtil {
     }
 
     private String createToken(Map<String, Object> claims, String email) {
+
         String encodedSecret = Base64.getEncoder().encodeToString(SECRET.getBytes(StandardCharsets.UTF_8));
         byte[] keyBytes = Base64.getDecoder().decode(encodedSecret);
 
         Key key = Keys.hmacShaKeyFor(keyBytes);
         return Jwts.builder()
+                .setHeaderParam("typ", "JWT")
                 .setClaims(claims)
                 .setSubject(email)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
