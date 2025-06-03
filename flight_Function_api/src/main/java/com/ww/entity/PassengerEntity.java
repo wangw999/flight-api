@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "PASSENGER")
-public class Passenger {
+public class PassengerEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,7 +12,7 @@ public class Passenger {
 
     @ManyToOne
     @JoinColumn(name = "booking_id")
-    private Booking booking;
+    private BookingEntity booking;
 
     @Column(nullable = false)
     private String firstName;
@@ -31,11 +31,11 @@ public class Passenger {
         this.passengerId = passengerId;
     }
 
-    public Booking getBooking() {
+    public BookingEntity getBooking() {
         return booking;
     }
 
-    public void setBooking(Booking booking) {
+    public void setBooking(BookingEntity booking) {
         this.booking = booking;
     }
 

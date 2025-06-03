@@ -23,7 +23,7 @@ spring:
       data-locations:
         - classpath:scripts/data.sql
 secret:
-  key: ww's secret key123456789012345678901234567890
+  key: ww's secret key---123456789012345678901234567890---
 server:
   port: 8081
 

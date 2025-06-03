@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "BOOKING")
-public class Booking {
+public class BookingEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,11 +14,11 @@ public class Booking {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private UserEntity user;
 
     @ManyToOne
     @JoinColumn(name = "flight_id")
-    private Flight flight;
+    private FlightEntity flight;
 
     @Column(nullable = false)
     private String reference;
@@ -38,19 +38,19 @@ public class Booking {
         this.bookingId = bookingId;
     }
 
-    public User getUser() {
+    public UserEntity getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserEntity user) {
         this.user = user;
     }
 
-    public Flight getFlight() {
+    public FlightEntity getFlight() {
         return flight;
     }
 
-    public void setFlight(Flight flight) {
+    public void setFlight(FlightEntity flight) {
         this.flight = flight;
     }
 

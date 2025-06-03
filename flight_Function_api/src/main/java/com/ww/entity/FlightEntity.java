@@ -8,7 +8,7 @@ import java.sql.Time;
 
 @Entity
 @Table(name = "FLIGHT")
-public class Flight {
+public class FlightEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,12 +20,12 @@ public class Flight {
     // 出发机场
     @ManyToOne
     @JoinColumn(name = "departure_airport_id")
-    private Airport departureAirport;
+    private AirportEntity departureAirport;
 
     // 到达机场
     @ManyToOne
     @JoinColumn(name = "destination_airport_id")
-    private Airport destinationAirport;
+    private AirportEntity destinationAirport;
 
     private Date departureDate;
 
@@ -49,19 +49,19 @@ public class Flight {
         this.flightNumber = flightNumber;
     }
 
-    public Airport getDepartureAirport() {
+    public AirportEntity getDepartureAirport() {
         return departureAirport;
     }
 
-    public void setDepartureAirport(Airport departureAirport) {
+    public void setDepartureAirport(AirportEntity departureAirport) {
         this.departureAirport = departureAirport;
     }
 
-    public Airport getDestinationAirport() {
+    public AirportEntity getDestinationAirport() {
         return destinationAirport;
     }
 
-    public void setDestinationAirport(Airport destinationAirport) {
+    public void setDestinationAirport(AirportEntity destinationAirport) {
         this.destinationAirport = destinationAirport;
     }
 

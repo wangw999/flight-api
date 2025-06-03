@@ -1,6 +1,6 @@
 package com.ww.service;
 
-import com.ww.entity.User;
+import com.ww.entity.UserEntity;
 import com.ww.dto.LoginRequestDto;
 import com.ww.dto.LoginResponseDto;
 import com.ww.dto.RegisterRequestDto;
@@ -25,7 +25,7 @@ public class AuthService {
     }
 
     public LoginResponseDto login(LoginRequestDto loginRequestDto) {
-        User user = userRepository.findByEmail(loginRequestDto.getEmail()).orElseThrow(()->new ResourceNotFoundException("User Not Found"));
+        UserEntity user = userRepository.findByEmail(loginRequestDto.getEmail()).orElseThrow(()->new ResourceNotFoundException("User Not Found"));
         if (!passwordEncoder.matches(loginRequestDto.getPassword(), user.getPassword())) {
             throw new RuntimeException("Invalid Credentials");
         }
@@ -36,7 +36,7 @@ public class AuthService {
     }
 
     public boolean register(RegisterRequestDto registerRequestDto) {
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setEmail(registerRequestDto.getEmail());
         user.setPassword(passwordEncoder.encode(registerRequestDto.getPassword()));
 //        user.setUserName(registerRequestDto.getEmail());
