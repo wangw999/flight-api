@@ -3,8 +3,6 @@ package com.ww.controller;
 import com.ww.config.http.ResponseMessage;
 import com.ww.dto.FlightDetailDto;
 import com.ww.dto.FlightDto;
-import com.ww.dto.LoginRequestDto;
-import com.ww.dto.LoginResponseDto;
 import com.ww.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
