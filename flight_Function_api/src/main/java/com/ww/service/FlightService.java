@@ -1,5 +1,6 @@
 package com.ww.service;
 
+import com.ww.dto.FlightDetailDto;
 import com.ww.dto.FlightDto;
 import com.ww.entity.AirportEntity;
 import com.ww.entity.FlightEntity;
@@ -14,6 +15,7 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -55,5 +57,19 @@ public class FlightService {
         FlightDto flightDto = new FlightDto();
         BeanUtils.copyProperties(entity, flightDto);
         return flightDto;
+    }
+
+    public FlightDetailDto getFilghtInfoById(String flightNumber) {
+        FlightEntity flightEntity = flightRepository.findByFlightNumber(flightNumber);
+        FlightDetailDto flightDetailDto = new FlightDetailDto();
+        flightDetailDto = new FlightDetailDto(
+                flightEntity.getFlightNumber(),
+                flightEntity.getDepartureAirport(),
+                flightEntity.getDestinationAirport(),
+                flightEntity.getDepartureDate(),
+                flightEntity.getDepartureTime(),
+                flightEntity.getPrice()
+        );
+        return flightDetailDto;
     }
 }
