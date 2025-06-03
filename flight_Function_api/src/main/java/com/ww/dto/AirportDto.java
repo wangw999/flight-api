@@ -1,8 +1,6 @@
 package com.ww.dto;
 
-import jakarta.persistence.Column;
-
-public class AriportDto {
+public class AirportDto {
 
     private String code;
 
