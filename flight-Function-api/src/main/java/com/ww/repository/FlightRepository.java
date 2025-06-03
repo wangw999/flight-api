@@ -9,7 +9,7 @@ public interface FlightRepository extends JpaRepository<Flight, Long> {
     // 根据航班号查找航班
     Optional<Flight> findByFlightNumber(String flightNumber);
     // 根据出发机场ID查找航班列表
-    List<Flight> findByDepartureAirportId(Long departureAirportId);
+    List<Flight> findByDepartureAirportAirportId(Long departureAirportId);
     // 根据到达机场ID查找航班列表
-    List<Flight> findByDestinationAirportId(Long destinationAirportId);
+    List<Flight> findByDestinationAirportAirportId(Long destinationAirportId);
 }

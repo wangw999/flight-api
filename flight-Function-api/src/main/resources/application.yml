@@ -2,7 +2,7 @@ spring:
   application:
     name: flight-Function-api
   datasource:
-    url: jdbc:mysql://localhost:3306/ndis_db
+    url: jdbc:mysql://localhost:3306/flight_db
     username: root
     password: ww123456
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -13,6 +13,15 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  # 让 Spring Boot 自动执行 SQL 初始化脚本
+  sql:
+    init:
+      # mode: always
+      mode: never
+      schema-locations:
+        - classpath:scripts/schema.sql
+      data-locations:
+        - classpath:scripts/data.sql
 
 
 server:
