@@ -4,7 +4,6 @@ import com.ww.config.http.ResponseMessage;
 import com.ww.dto.BookingDetailDto;
 import com.ww.dto.BookingDto;
 import com.ww.dto.BookingRequestDto;
-import com.ww.dto.FlightDto;
 import com.ww.service.BookingsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
