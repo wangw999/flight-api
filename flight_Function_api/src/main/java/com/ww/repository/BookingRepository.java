@@ -10,4 +10,6 @@ public interface BookingRepository extends JpaRepository<BookingEntity, Long> {
     List<BookingEntity> findByUserUserId(Long userId);
     // 根据预订ID查找预订记录
     Optional<BookingEntity> findByBookingId(Long bookingId);
+
+    List<BookingEntity> findByFlight_FlightId(Long flightId);
 }

@@ -4,15 +4,15 @@ import com.ww.entity.PassengerEntity;
 
 public class BookingRequestDto {
 
-    private Long flightId;
+    private String flightId;
 
     private PassengerEntity PassengerInfo;
 
-    public Long getFlightId() {
+    public String getFlightId() {
         return flightId;
     }
 
-    public void setFlightId(Long flightId) {
+    public void setFlightId(String flightId) {
         this.flightId = flightId;
     }
 
