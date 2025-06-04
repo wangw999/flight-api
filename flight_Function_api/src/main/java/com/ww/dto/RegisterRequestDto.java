@@ -1,7 +1,5 @@
 package com.ww.dto;
 
-import jakarta.persistence.Column;
-
 public class RegisterRequestDto {
     private String email;
     private String password;
