@@ -35,7 +35,7 @@ public class JwtUtil {
                 .setClaims(claims)
                 .setSubject(email)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) //10 mins
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) //10 hours
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
@@ -47,6 +47,7 @@ public class JwtUtil {
         Key key = Keys.hmacShaKeyFor(keyBytes);
         return Jwts.parserBuilder()
                 .setSigningKey(key)
+                .setAllowedClockSkewSeconds(300) // 5 分钟偏移，需确保此行存在且未被注释
                 .build()
                 .parseClaimsJws(token)
                 .getBody()

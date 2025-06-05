@@ -13,7 +13,7 @@ public class CorsConfig {
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
         // config.addAllowedOrigin("http://localhost:4200"); // 允许的前端地址 anglar
-        config.addAllowedOrigin("http://localhost:5173"); // 允许的前端地址 React
+        config.addAllowedOrigin("http://localhost:3000"); // 允许的前端地址 React 5173
         config.addAllowedHeader("*"); // 允许所有请求头
         config.addAllowedMethod("*"); // 允许所有请求方法（GET, POST, etc.）
         config.setAllowCredentials(true); // 允许携带 Cookie
