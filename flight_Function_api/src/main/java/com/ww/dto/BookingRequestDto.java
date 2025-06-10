@@ -11,5 +11,5 @@ public class BookingRequestDto {
 
     private String flightId;
 
-    private PassengerEntity PassengerInfo;
+    private PassengerEntity passengerInfo;
 }

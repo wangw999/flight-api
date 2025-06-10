@@ -24,22 +24,37 @@ public class FlightService {
     }
 
     public List<FlightDto> getFilghtInfoByDepartureAndDestinationAndDate(String departureAirportName,
-                                                                         String destinationAirportName,
-                                                                         java.sql.Date departureDate) {
+            String destinationAirportName,
+            java.sql.Date departureDate) {
 
-        List<FlightEntity> listFlightEntity = flightRepository.findByDepartureAndDestinationAndDate(departureAirportName, destinationAirportName, departureDate);
-        //        List<FlightDto> listFlightDto = listFlightEntity.stream()
-        //                .map(FlightEntity ->
-        //                        new FlightDto(
-        //                                FlightEntity.getFlightNumber(),
-        //                                FlightEntity.getDepartureAirport(),
-        //                                FlightEntity.getDestinationAirport(),
-        //                                FlightEntity.getDepartureDate(),
-        //                                FlightEntity.getDepartureTime(),
-        //                                FlightEntity.getPrice()
-        //                        )
-        //                )
-        //                .collect(Collectors.toList());
+        List<FlightEntity> listFlightEntity = flightRepository
+                .findByDepartureAndDestinationAndDate(departureAirportName, destinationAirportName, departureDate);
+        // List<FlightDto> listFlightDto = listFlightEntity.stream()
+        // .map(FlightEntity ->
+        // new FlightDto(
+        // FlightEntity.getFlightNumber(),
+        // FlightEntity.getDepartureAirport(),
+        // FlightEntity.getDestinationAirport(),
+        // FlightEntity.getDepartureDate(),
+        // FlightEntity.getDepartureTime(),
+        // FlightEntity.getPrice()
+        // )
+        // )
+        // .collect(Collectors.toList());
+        List<FlightDto> listFlightDto = new ArrayList<FlightDto>();
+        listFlightDto = listFlightEntity.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+
+        return listFlightDto;
+    }
+
+    public List<FlightDto> getFilghtInfoByCityAndDate(String departureAirportCity,
+            String destinationAirportCity,
+            java.sql.Date departureDate) {
+
+        List<FlightEntity> listFlightEntity = flightRepository.findByDepartureCityAndDestinationCityAndDate(
+                departureAirportCity, destinationAirportCity, departureDate);
         List<FlightDto> listFlightDto = new ArrayList<FlightDto>();
         listFlightDto = listFlightEntity.stream()
                 .map(this::convertToDto)
@@ -54,7 +69,7 @@ public class FlightService {
         return flightDto;
     }
 
-    public FlightDetailDto getFilghtInfoById(String flightNumber) {
+    public FlightDetailDto getFlightInfoById(String flightNumber) {
         FlightEntity flightEntity = flightRepository.findByFlightNumber(flightNumber);
         FlightDetailDto flightDetailDto = new FlightDetailDto();
         flightDetailDto = new FlightDetailDto(
@@ -63,8 +78,9 @@ public class FlightService {
                 flightEntity.getDestinationAirport(),
                 flightEntity.getDepartureDate(),
                 flightEntity.getDepartureTime(),
-                flightEntity.getPrice()
-        );
+                flightEntity.getDestinationDate(),
+                flightEntity.getDestinationTime(),
+                flightEntity.getPrice());
         return flightDetailDto;
     }
 }

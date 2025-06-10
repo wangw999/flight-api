@@ -22,14 +22,21 @@ public class FlightDetailDto {
 
     private Time departureTime;
 
+    private Date destinationDate;
+
+    private Time destinationTime;
+
     private BigDecimal price;
 
-    public FlightDetailDto(String flightNumber, AirportEntity departureAirport, AirportEntity destinationAirport, Date departureDate, Time departureTime, BigDecimal price) {
+    public FlightDetailDto(String flightNumber, AirportEntity departureAirport, AirportEntity destinationAirport,
+            Date departureDate, Time departureTime, Date destinationDate, Time destinationTime, BigDecimal price) {
         this.flightNumber = flightNumber;
         this.departureAirport = departureAirport;
         this.destinationAirport = destinationAirport;
         this.departureDate = departureDate;
         this.departureTime = departureTime;
+        this.destinationDate = destinationDate;
+        this.destinationTime = destinationTime;
         this.price = price;
     }
 

@@ -35,5 +35,9 @@ public class FlightEntity {
 
     private Time departureTime;
 
+    private Date destinationDate;
+
+    private Time destinationTime;
+
     private BigDecimal price;
 }
