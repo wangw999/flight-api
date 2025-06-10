@@ -2,14 +2,14 @@ spring:
   application:
     name: flight-Function-api
   datasource:
-    # url: jdbc:mysql://localhost:3306/flight_db
-    # username: root
-    # password: ww123456
-    # driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://wangwei-flightdb.cj6gcogsidzt.ap-southeast-2.rds.amazonaws.com:3306/flight_db?useSSL=false&serverTimezone=UTC&characterEncoding=utf8&allowPublicKeyRetrieval=true
-    username: admin
+    url: jdbc:mysql://localhost:3306/flight_db
+    username: root
     password: ww123456
     driver-class-name: com.mysql.cj.jdbc.Driver
+    # url: jdbc:mysql://wangwei-flightdb.cj6gcogsidzt.ap-southeast-2.rds.amazonaws.com:3306/flight_db?useSSL=false&serverTimezone=UTC&characterEncoding=utf8&allowPublicKeyRetrieval=true
+    # username: admin
+    # password: ww123456
+    # driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     properties:
       hibernate:
@@ -20,7 +20,7 @@ spring:
   # 让 Spring Boot 自动执行 SQL 初始化脚本
   sql:
     init:
-      # mode: never   always
+      # mode: never or always
       mode: never
       schema-locations:
         - classpath:scripts/schema.sql
@@ -33,7 +33,6 @@ server:
 
 
 # spring.application.name=cicd-aws
-  
 # spring.datasource.url=${SPRING_DATABASE_URL}
 # spring.datasource.username=${SPRING_DATABASE_USERNAME}
 # spring.datasource.password=${SPRING_DATABASE_PASSWORD}

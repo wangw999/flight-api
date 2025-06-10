@@ -1,8 +1,12 @@
 package com.ww.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "AIRPORT")
 public class AirportEntity {
 
@@ -19,35 +23,4 @@ public class AirportEntity {
     @Column(nullable = false)
     private String city;
 
-    public Long getAirportId() {
-        return airportId;
-    }
-
-    public void setAirportId(Long airportId) {
-        this.airportId = airportId;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
 }

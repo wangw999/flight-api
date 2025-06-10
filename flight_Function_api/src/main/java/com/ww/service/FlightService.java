@@ -1,22 +1,17 @@
 package com.ww.service;
 
-import com.ww.dto.FlightDetailDto;
-import com.ww.dto.FlightDto;
-import com.ww.entity.AirportEntity;
-import com.ww.entity.FlightEntity;
-import com.ww.repository.FlightRepository;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Service;
-
-import java.math.BigDecimal;
-import java.sql.Date;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ww.dto.FlightDetailDto;
+import com.ww.dto.FlightDto;
+import com.ww.entity.FlightEntity;
+import com.ww.repository.FlightRepository;
 
 @Service
 public class FlightService {

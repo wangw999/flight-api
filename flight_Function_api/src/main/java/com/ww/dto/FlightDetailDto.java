@@ -6,6 +6,11 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Time;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class FlightDetailDto {
     private String flightNumber;
 
@@ -31,51 +36,4 @@ public class FlightDetailDto {
     public FlightDetailDto() {
     }
 
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public Time getDepartureTime() {
-        return departureTime;
-    }
-
-    public void setDepartureTime(Time departureTime) {
-        this.departureTime = departureTime;
-    }
-
-    public Date getDepartureDate() {
-        return departureDate;
-    }
-
-    public void setDepartureDate(Date departureDate) {
-        this.departureDate = departureDate;
-    }
-
-    public AirportEntity getDestinationAirport() {
-        return destinationAirport;
-    }
-
-    public void setDestinationAirport(AirportEntity destinationAirport) {
-        this.destinationAirport = destinationAirport;
-    }
-
-    public AirportEntity getDepartureAirport() {
-        return departureAirport;
-    }
-
-    public void setDepartureAirport(AirportEntity departureAirport) {
-        this.departureAirport = departureAirport;
-    }
-
-    public String getFlightNumber() {
-        return flightNumber;
-    }
-
-    public void setFlightNumber(String flightNumber) {
-        this.flightNumber = flightNumber;
-    }
 }
