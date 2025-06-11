@@ -35,3 +35,12 @@ volumes:
 # docker-compose build  
 # # 再启动容器
 # docker-compose up 
+
+
+# # Docker 命令
+# docker-compose up --build
+
+# # Podman 等效命令
+# podman-compose up --build
+
+# podman-compose -f docker-compose.yml build --build-arg \REGISTRY=registry.docker-cn.com

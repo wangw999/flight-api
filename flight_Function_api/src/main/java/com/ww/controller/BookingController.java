@@ -24,10 +24,12 @@ public class BookingController {
 
     @GetMapping
     public ResponseEntity<ResponseMessage<List<BookingDto>>> getBookings(
-            @RequestParam(name = "status") int status,
-            @RequestParam(name = "page", defaultValue = "1") int page,
-            @RequestParam(name = "size", defaultValue = "10") int size) {
-        List<BookingDto> bookings = bookingsService.getBookings(page, size);
+            // @RequestParam(name = "status") int status,
+            // @RequestParam(name = "page", defaultValue = "1") int page,
+            // @RequestParam(name = "size", defaultValue = "10") int size) {
+                ) {
+        // List<BookingDto> bookings = bookingsService.getBookings(page, size);
+        List<BookingDto> bookings = bookingsService.getBookings();
         ResponseMessage<List<BookingDto>> response = ResponseMessage.success(bookings);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }

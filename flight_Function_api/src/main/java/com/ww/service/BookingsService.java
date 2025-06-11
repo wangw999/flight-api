@@ -26,8 +26,8 @@ public class BookingsService {
         this.flightRepository = flightRepository;
     }
 
-
-    public List<BookingDto> getBookings(int page, int size) {
+    // public List<BookingDto> getBookings(int page, int size) {
+    public List<BookingDto> getBookings() {
         return bookingRepository.findAll().stream()
                 .map(this::mapToDto)
                 .collect(Collectors.toList());
