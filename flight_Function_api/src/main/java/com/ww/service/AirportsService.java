@@ -1,13 +1,14 @@
 package com.ww.service;
 
-import com.ww.dto.AirportDto;
-import com.ww.entity.AirportEntity;
-import com.ww.repository.AirportRepository;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import com.ww.dto.AirportDto;
+import com.ww.entity.AirportEntity;
+import com.ww.repository.AirportRepository;
 
 @Service
 public class AirportsService {

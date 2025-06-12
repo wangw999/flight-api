@@ -10,6 +10,8 @@ import lombok.Setter;
 @Setter
 public class BookingDto {
 
+    private Long bookingId;
+
     private FlightEntity flight;
 
     private String reference;

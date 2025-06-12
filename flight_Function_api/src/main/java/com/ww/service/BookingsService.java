@@ -1,29 +1,35 @@
 package com.ww.service;
 
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.ww.dto.BookingDetailDto;
 import com.ww.dto.BookingDto;
 import com.ww.entity.BookingEntity;
 import com.ww.entity.FlightEntity;
 import com.ww.entity.PassengerEntity;
+import com.ww.entity.UserEntity;
 import com.ww.repository.BookingRepository;
 import com.ww.repository.FlightRepository;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.ww.repository.UserRepository;
 
 @Service
 public class BookingsService {
     private final BookingRepository bookingRepository;
     private final FlightRepository flightRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public BookingsService(BookingRepository bookingRepository, FlightRepository flightRepository) {
+    public BookingsService(BookingRepository bookingRepository, FlightRepository flightRepository,
+            UserRepository userRepository) {
         this.bookingRepository = bookingRepository;
         this.flightRepository = flightRepository;
+        this.userRepository = userRepository;
     }
 
     // public List<BookingDto> getBookings(int page, int size) {
@@ -39,15 +45,21 @@ public class BookingsService {
                 .orElse(null);
     }
 
-    public BookingDto createBooking(String flightId, PassengerEntity passengerInfo) {
+    public BookingDto createBooking(String flightNumber, PassengerEntity passengerInfo) {
         BookingEntity bookingEntity = new BookingEntity();
-        FlightEntity flight = flightRepository.findByFlightNumber(flightId);
+        BookingEntity bookingEntitySave = new BookingEntity();
+        BookingDto bookingDto = new BookingDto();
+        FlightEntity flight = flightRepository.findByFlightNumber(flightNumber);
+        UserEntity user = userRepository.findByEmail(passengerInfo.getEmail()).orElse(new UserEntity());
         bookingEntity.setFlight(flight);
+        bookingEntity.setUser(user);
         bookingEntity.setBookingTime(LocalDateTime.now());
-        bookingEntity.setReference("AAA");
-        bookingEntity.setStatus("2");
-        bookingRepository.save(bookingEntity);
-        return new BookingDto();
+        bookingEntity.setReference("test");
+        bookingEntity.setStatus("PENDING");
+        bookingEntitySave = bookingRepository.save(bookingEntity);
+        bookingDto.setBookingId(bookingEntitySave.getBookingId());
+
+        return bookingDto;
     }
 
     private BookingDto mapToDto(BookingEntity entity) {

@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class BookingRequestDto {
 
-    private String flightId;
+    private String flightNumber;
 
     private PassengerEntity passengerInfo;
 }
