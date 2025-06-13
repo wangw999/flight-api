@@ -7,6 +7,7 @@
     <modules>
         <module>flight_Function_api</module>
         <module>flight_logger</module>
+        <module>test_api</module>
     </modules>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
